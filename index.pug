@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title To Do List
+
+  link(rel="stylesheet prefetch", href="https://fonts.googleapis.com/css?family=Roboto:300,400,500")
+  link(rel="stylesheet prefetch", href="https://use.fontawesome.com/releases/v5.0.12/css/all.css")
+  link(rel="stylesheet", href="css/style.css")
+
+body
+
 #todolist
   .title
     h1 Todo List
@@ -7,10 +19,10 @@
     .tagundo(v-if="item.done==false") {{item.name}}
     .tagdone(v-if="item.done==true") {{item.name}}
     .actions
-      .btn(v-on:click="check(item)") 
+      .btn(v-on:click="check(item)")
         .check(v-if="item.done==true")
           i.fas.fa-check-square
-        .check(v-if="item.done==false") 
+        .check(v-if="item.done==false")
           i.far.fa-square
       .btn(v-on:click="remove(id,item)")
         i.fas.fa-trash
@@ -19,5 +31,7 @@
   li.form
     label Add to the todo list <br>
     input(v-model="newitem" v-on:keyup.enter="add(newitem)")
-    span.addbtn(v-on:click="add(newitem)") ADD ITEM 
-      
+    span.addbtn(v-on:click="add(newitem)") ADD ITEM
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js")
+script(src="js/index.js")
