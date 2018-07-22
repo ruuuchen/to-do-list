@@ -9,29 +9,28 @@ head
   link(rel="stylesheet", href="css/style.css")
 
 body
+  #todolist
+    .title
+      h1 Todo List
+      h4 Get things done, one item at a time.
+      hr
+    li.item(v-for="(id,item) in array")
+      .tagundo(v-if="item.done==false") {{item.name}}
+      .tagdone(v-if="item.done==true") {{item.name}}
+      .actions
+        .btn(v-on:click="check(item)")
+          .check(v-if="item.done==true")
+            i.fas.fa-check-square
+          .check(v-if="item.done==false")
+            i.far.fa-square
+        .btn(v-on:click="remove(id,item)")
+          i.fas.fa-trash
+    li.sel Move done items at the end?
+      .togglebtn(v-on:click="toogle" v-bind:class="status? 'togglechecked':''")
+    li.form
+      label Add to the todo list <br>
+      input(v-model="newitem" v-on:keyup.enter="add(newitem)")
+      span.addbtn(v-on:click="add(newitem)") ADD ITEM
 
-#todolist
-  .title
-    h1 Todo List
-    h4 Get things done, one item at a time.
-    hr
-  li.item(v-for="(id,item) in array")
-    .tagundo(v-if="item.done==false") {{item.name}}
-    .tagdone(v-if="item.done==true") {{item.name}}
-    .actions
-      .btn(v-on:click="check(item)")
-        .check(v-if="item.done==true")
-          i.fas.fa-check-square
-        .check(v-if="item.done==false")
-          i.far.fa-square
-      .btn(v-on:click="remove(id,item)")
-        i.fas.fa-trash
-  li.sel Move done items at the end?
-    .togglebtn(v-on:click="toogle" v-bind:class="status? 'togglechecked':''")
-  li.form
-    label Add to the todo list <br>
-    input(v-model="newitem" v-on:keyup.enter="add(newitem)")
-    span.addbtn(v-on:click="add(newitem)") ADD ITEM
-
-script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js")
-script(src="js/index.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js")
+  script(src="js/index.js")

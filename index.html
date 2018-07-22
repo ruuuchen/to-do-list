@@ -7,31 +7,32 @@
   <link rel="stylesheet prefetch" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"/>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body></body>
-<div id="todolist">
-  <div class="title">
-    <h1>Todo List</h1>
-    <h4>Get things done, one item at a time.</h4>
-    <hr/>
-  </div>
-  <li class="item" v-for="(id,item) in array">
-    <div class="tagundo" v-if="item.done==false">{{item.name}}</div>
-    <div class="tagdone" v-if="item.done==true">{{item.name}}</div>
-    <div class="actions">
-      <div class="btn" v-on:click="check(item)">
-        <div class="check" v-if="item.done==true"><i class="fas fa-check-square"></i></div>
-        <div class="check" v-if="item.done==false"><i class="far fa-square"></i></div>
-      </div>
-      <div class="btn" v-on:click="remove(id,item)"><i class="fas fa-trash"></i></div>
+<body>
+  <div id="todolist">
+    <div class="title">
+      <h1>Todo List</h1>
+      <h4>Get things done, one item at a time.</h4>
+      <hr/>
     </div>
-  </li>
-  <li class="sel">Move done items at the end?
-    <div class="togglebtn" v-on:click="toogle" v-bind:class="status? 'togglechecked':''"></div>
-  </li>
-  <li class="form">
-    <label>Add to the todo list <br></label>
-    <input v-model="newitem" v-on:keyup.enter="add(newitem)"/><span class="addbtn" v-on:click="add(newitem)">ADD ITEM</span>
-  </li>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
-<script src="js/index.js"></script>
+    <li class="item" v-for="(id,item) in array">
+      <div class="tagundo" v-if="item.done==false">{{item.name}}</div>
+      <div class="tagdone" v-if="item.done==true">{{item.name}}</div>
+      <div class="actions">
+        <div class="btn" v-on:click="check(item)">
+          <div class="check" v-if="item.done==true"><i class="fas fa-check-square"></i></div>
+          <div class="check" v-if="item.done==false"><i class="far fa-square"></i></div>
+        </div>
+        <div class="btn" v-on:click="remove(id,item)"><i class="fas fa-trash"></i></div>
+      </div>
+    </li>
+    <li class="sel">Move done items at the end?
+      <div class="togglebtn" v-on:click="toogle" v-bind:class="status? 'togglechecked':''"></div>
+    </li>
+    <li class="form">
+      <label>Add to the todo list <br></label>
+      <input v-model="newitem" v-on:keyup.enter="add(newitem)"/><span class="addbtn" v-on:click="add(newitem)">ADD ITEM</span>
+    </li>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
+  <script src="js/index.js"></script>
+</body>
